@@ -19,12 +19,15 @@
 %
 %<*driver>
 \documentclass{ltxdoc}
+\usepackage[english,french]{babel}
 \usepackage{bibleref-french}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
 \OnlyDescription
 \begin{document}
+ \selectlanguage{english}
+ \shorthandoff{:}
  \DocInput{bibleref-french.dtx}
 \end{document}
 %</driver>
@@ -61,6 +64,7 @@
 %
 %Styles are listed in Table~\ref{tab:styles}.
 %
+%\selectlanguage{french}
 %\begin{table}[tbh]
 %\caption{Bible Citation Styles (can be used as package option or in the argument to 
 %\cs{biblerefstyle})}
@@ -71,9 +75,11 @@
 %\bfseries Style & \bfseries Example\\
 %default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5)\\
 %jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5)\\
+%text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5)\\
 %\end{tabular}
 %\end{center}
 %\end{table}
+%\selectlanguage{english}
 %
 % \StopEventually{\PrintIndex}
 %
@@ -399,6 +405,37 @@
 \renewcommand*{\BRvrsep}{--}%
 \renewcommand*{\BRvsep}{,}%
 \renewcommand*{\BRperiod}{}}
+
+\renewcommand*{\brs@text}{%
+\biblerefstyle{default}%
+\renewcommand{\BRbooknumberstyle}[1]{%
+\protect\Ordinalstringnum{##1}\ }%
+\renewcommand{\BRepistlenumberstyle}[1]{%
+\protect\Ordinalstringnum{##1}\ }%
+\renewcommand{\BRbookof}{Livre de }%
+\renewcommand{\BRgospel}{\'Evangile selon Saint }%
+\renewcommand{\BRepistletothe}{\'Ep\^itre aux }%
+\renewcommand{\BRepistleto}{\'Ep\^itre à }%
+\renewcommand{\BRepistleof}{\'Ep\^itre de }%
+\renewcommand{\BRchapterstyle}[1]{%
+chapitre \protect\numberstringnum{##1}}%
+\renewcommand{\BRbkchsep}{, }%
+\renewcommand{\BRchvsep}{ verset }%
+\renewcommand{\BRchsep}{, }%
+\renewcommand{\BRvrsep}{ \`a }%
+\renewcommand{\BRvsep}{, }%
+\renewcommand{\BRversestyle}[1]{\protect\numberstringnum{##1}}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+}
+%  \end{macrocode}
+%
+% \subsection{Package options}
+%
+%  \begin{macrocode}
+\DeclareOption{default}{\brs@default}
+\DeclareOption{jerusalem}{\brs@jerusalem}
+\DeclareOption{text}{\brs@text}
+\ProcessOptions
 %  \end{macrocode}
 %
 % \Finale
