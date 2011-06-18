@@ -73,13 +73,15 @@
 %\begin{center}
 %\begin{tabular}{lp{0.5\textwidth}}
 %\bfseries Style & \bfseries Example\\
-%default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
-%jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
-%colombe & \biblerefstyle{colombe}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
-%colombefull & \biblerefstyle{colombefull}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
-%NBS & \biblerefstyle{NBS}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
-%NBSfull & \biblerefstyle{NBSfull}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
-%text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%colombe & \biblerefstyle{colombe}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%colombefull & \biblerefstyle{colombefull}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%NBS & \biblerefstyle{NBS}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%NBSfull & \biblerefstyle{NBSfull}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%TOB & \biblerefstyle{TOB}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%TOBfull & \biblerefstyle{TOBfull}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
+%text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5,7) ; \bibleverse{Qo}(1:3)(2:5) ; \bibleverse{Is}(10:)\\
 %\end{tabular}
 %\end{center}
 %\end{table}
@@ -123,6 +125,9 @@
 % string used in the \verb!\ibibleref! calls. For example, if you use
 % \verb!\ibibleref{Jn}(3:16)!, you will need to declare \verb!\biblerefmap{Jn}{43}!
 % instead of \verb!\biblerefmap{Jean}{43}!.
+%
+% Note that the \textsf{TOB} style uses Catholic book names, except for the book of
+% Esa\"ie, which is overridden.
 %
 % \subsection{Non-breakable Spaces}
 %
@@ -620,6 +625,50 @@
 \renewcommand*{\BRvsep}{,}%
 \renewcommand*{\BRperiod}{}}
 
+\newcommand*{\brs@TOB}{%
+\brabbrvname@catholic
+% TOB uses Esaie like protestant Bibles
+\def\br@Isaiah{\BRbookof Es}%
+\renewcommand*{\BRbooknumberstyle}[1]{##1~}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{{##1}}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{~}%
+\renewcommand*{\BRchvsep}{.}%
+\renewcommand*{\BRchsep}{ ; }%
+\renewcommand*{\BRvrsep}{\mbox{-}\nobreak}%
+\renewcommand*{\BRvsep}{,~}%
+\renewcommand*{\BRperiod}{}}
+
+\newcommand*{\brs@TOBfull}{%
+\brfullname@catholic
+% TOB uses Esaie like protestant Bibles
+\def\br@Isaiah{\BRbookof Esa\"ie}%
+\renewcommand*{\BRbooknumberstyle}[1]{##1~}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{{##1}}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{~}%
+\renewcommand*{\BRchvsep}{.}%
+\renewcommand*{\BRchsep}{ ; }%
+\renewcommand*{\BRvrsep}{\mbox{-}\nobreak}%
+\renewcommand*{\BRvsep}{,~}%
+\renewcommand*{\BRperiod}{}}
+
 \renewcommand*{\brs@text}{%
 \biblerefstyle{default}%
 \renewcommand{\BRbooknumberstyle}[1]{%
@@ -671,9 +720,11 @@ chapitre \protect\numberstringnum{##1}}%
 \DeclareOption{default}{\brs@default}
 \DeclareOption{jerusalem}{\brs@jerusalem}
 \DeclareOption{colombe}{\brs@jerusalem}
-\DeclareOption{NBS}{\brs@jerusalem}
 \DeclareOption{colombefull}{\brs@jerusalem}
+\DeclareOption{NBS}{\brs@jerusalem}
 \DeclareOption{NBSfull}{\brs@jerusalem}
+\DeclareOption{TOB}{\brs@jerusalem}
+\DeclareOption{TOBfull}{\brs@jerusalem}
 \DeclareOption{text}{\brs@text}
 % Use Catholic names by default
 \let\brfullname\brfullname@catholic
