@@ -120,6 +120,29 @@
 % \verb!\ibibleref{Jn}(3:16)!, you will need to declare \verb!\biblerefmap{Jn}{43}!
 % instead of \verb!\biblerefmap{Jean}{43}!.
 %
+% \subsection{Non-breakable Spaces}
+%
+% The manual from the French \emph{Imprimerie Nationale} states that
+% numbers should not be separated from the text they go with.
+% For this reason, this package uses non-breakable spaces in the following cases:
+% \begin{itemize}
+%  \item Between the number and name when a book name
+%        contains a number (e.g. 2~Corinthiens);
+%  \item Between the book name and the chapter name;
+%  \item After an en-dash (--) in a verse range.
+% \end{itemize}
+%
+% While this is generally better, it might lead to overfull lines when long
+% Bible references end a line. For this reason, this package provides a
+% \verb!\BRallowhypbch! command to allow line breaks between the book name
+% and the chapter number in Bible references. The \verb!\BRforbidhypbch!
+% command restores the non-breakable space between book name and chapter number.
+%
+% If you need to fix an overfull line finishing with a long Bible verse and
+% there is no other possibility than to allow a cut between the book name
+% and the chapter number, it is recommended that you call \verb!\BRallowhypbch!
+% in an environment that contains the problematic paragraph.
+%
 % \section{Known Issues}
 %
 % \subsection{Book Names in \textsf{text} style}
@@ -174,7 +197,7 @@
 \renewcommand*{\BRbkchsep}{~}%
 \renewcommand*{\BRchvsep}{,~}%
 \renewcommand*{\BRchsep}{ ; }%
-\renewcommand*{\BRvrsep}{--}%
+\renewcommand*{\BRvrsep}{\mbox{--}\nobreak}%
 \renewcommand*{\BRvsep}{ ; }%
 \renewcommand*{\BRperiod}{}
 \renewcommand*{\brs@default}{%
@@ -193,7 +216,7 @@
 \renewcommand*{\BRbkchsep}{~}%
 \renewcommand*{\BRchvsep}{,~}%
 \renewcommand*{\BRchsep}{ ; }%
-\renewcommand*{\BRvrsep}{--}%
+\renewcommand*{\BRvrsep}{\mbox{--}\nobreak}%
 \renewcommand*{\BRvsep}{ ; }%
 \renewcommand*{\BRperiod}{}}
 %  \end{macrocode}
@@ -489,7 +512,7 @@
 \renewcommand*{\BRbkchsep}{~}%
 \renewcommand*{\BRchvsep}{,~}%
 \renewcommand*{\BRchsep}{ ; }%
-\renewcommand*{\BRvrsep}{--}%
+\renewcommand*{\BRvrsep}{\mbox{--}\nobreak}%
 \renewcommand*{\BRvsep}{ ; }%
 \renewcommand*{\BRperiod}{}}
 
@@ -509,7 +532,7 @@
 \renewcommand*{\BRbkchsep}{~}%
 \renewcommand*{\BRchvsep}{~}%
 \renewcommand*{\BRchsep}{ ; }%
-\renewcommand*{\BRvrsep}{--}%
+\renewcommand*{\BRvrsep}{\mbox{--}\nobreak}%
 \renewcommand*{\BRvsep}{,}%
 \renewcommand*{\BRperiod}{}}
 
@@ -538,9 +561,6 @@ chapitre \protect\numberstringnum{##1}}%
 %
 % \subsection{Protestant Book Names}
 %
-% French Catholics and Protestants use different names for a couple of Bible books.
-% This is the case of the books of Isaïe/Esaïe and Qoh\'eleth/Eccl\'esiaste.
-%
 %  \begin{macrocode}
 \newcommand*{\brfullname@protestant}{%
 \brfullname@catholic%
@@ -552,6 +572,13 @@ chapitre \protect\numberstringnum{##1}}%
 \def\br@Isaiah{\BRbookof Es}%
 \def\br@Ecclesiastes{\BRbookof Ec}%
 }
+%  \end{macrocode}
+%
+% \subsection{Allow and Forbid Line Breaks}
+%
+%  \begin{macrocode}
+\newcommand*{\BRallowhypbch}{\renewcommand*{\BRbkchsep}{ }}
+\newcommand*{\BRforbidhypbch}{\renewcommand*{\BRbkchsep}{~}}
 %  \end{macrocode}
 %
 % \subsection{Package options}
