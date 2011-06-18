@@ -73,9 +73,13 @@
 %\begin{center}
 %\begin{tabular}{lp{0.5\textwidth}}
 %\bfseries Style & \bfseries Example\\
-%default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5)\\
-%jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5)\\
-%text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5)\\
+%default & \biblerefstyle{default}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%jerusalem & \biblerefstyle{jerusalem}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%colombe & \biblerefstyle{colombe}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%colombefull & \biblerefstyle{colombefull}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%NBS & \biblerefstyle{NBS}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%NBSfull & \biblerefstyle{NBSfull}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
+%text & \biblerefstyle{text}\bibleverse{IICor}(12:1-5) ; \bibleverse{Qo}(1:3)(2:5)\\
 %\end{tabular}
 %\end{center}
 %\end{table}
@@ -536,6 +540,86 @@
 \renewcommand*{\BRvsep}{,}%
 \renewcommand*{\BRperiod}{}}
 
+\newcommand*{\brs@colombe}{%
+\brabbrvname@protestant
+\renewcommand*{\BRbooknumberstyle}[1]{##1~}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{{##1}}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{~}%
+\renewcommand*{\BRchvsep}{.}%
+\renewcommand*{\BRchsep}{ ; }%
+\renewcommand*{\BRvrsep}{\mbox{--}\nobreak}%
+\renewcommand*{\BRvsep}{,}%
+\renewcommand*{\BRperiod}{}}
+
+\newcommand*{\brs@colombefull}{%
+\brfullname@protestant
+\renewcommand*{\BRbooknumberstyle}[1]{##1~}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{{##1}}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{~}%
+\renewcommand*{\BRchvsep}{.}%
+\renewcommand*{\BRchsep}{ ; }%
+\renewcommand*{\BRvrsep}{\mbox{--}\nobreak}%
+\renewcommand*{\BRvsep}{,}%
+\renewcommand*{\BRperiod}{}}
+
+\newcommand*{\brs@NBS}{%
+\brabbrvname@protestant
+\renewcommand*{\BRbooknumberstyle}[1]{##1~}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{{##1}}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{~}%
+\renewcommand*{\BRchvsep}{.}%
+\renewcommand*{\BRchsep}{ ; }%
+\renewcommand*{\BRvrsep}{\mbox{-}\nobreak}%
+\renewcommand*{\BRvsep}{,}%
+\renewcommand*{\BRperiod}{}}
+
+\newcommand*{\brs@NBSfull}{%
+\brfullname@protestant
+\renewcommand*{\BRbooknumberstyle}[1]{##1~}%
+\renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
+\renewcommand*{\BRbooktitlestyle}[1]{##1}%
+\renewcommand*{\BRchapterstyle}[1]{{##1}}%
+\renewcommand*{\BRversestyle}[1]{##1}%
+\renewcommand*{\BRversesuffixstyle}[1]{##1}%
+\renewcommand*{\BRbookof}{}%
+\renewcommand*{\BRgospel}{}%
+\renewcommand*{\BRepistletothe}{}%
+\renewcommand*{\BRepistleto}{}%
+\renewcommand*{\BRepistleof}{}%
+\renewcommand*{\BRbkchsep}{~}%
+\renewcommand*{\BRchvsep}{.}%
+\renewcommand*{\BRchsep}{ ; }%
+\renewcommand*{\BRvrsep}{\mbox{-}\nobreak}%
+\renewcommand*{\BRvsep}{,}%
+\renewcommand*{\BRperiod}{}}
+
 \renewcommand*{\brs@text}{%
 \biblerefstyle{default}%
 \renewcommand{\BRbooknumberstyle}[1]{%
@@ -586,6 +670,10 @@ chapitre \protect\numberstringnum{##1}}%
 %  \begin{macrocode}
 \DeclareOption{default}{\brs@default}
 \DeclareOption{jerusalem}{\brs@jerusalem}
+\DeclareOption{colombe}{\brs@jerusalem}
+\DeclareOption{NBS}{\brs@jerusalem}
+\DeclareOption{colombefull}{\brs@jerusalem}
+\DeclareOption{NBSfull}{\brs@jerusalem}
 \DeclareOption{text}{\brs@text}
 % Use Catholic names by default
 \let\brfullname\brfullname@catholic
