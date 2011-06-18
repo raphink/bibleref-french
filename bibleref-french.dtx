@@ -93,9 +93,11 @@
 %
 % Both \verb!\brfullname@catholic! and \verb!\brfullname@protestant! can be used
 % as a replacements to \verb!\brfullname! in style definitions to force
-% using either naming scheme. This is however not recommended, as using \verb!\brfullname!
-% allows users to use a style with the naming scheme of their choice.
-% For example, you can use \verb!\usepackage[jerusalem,protestant]{bibleref-french}!
+% using either naming scheme.
+%
+% At loading time, the naming scheme can be overridden for a given style.
+% For example, the \textsf{jerusalem} style uses \verb!\brfullname@catholic!,
+% but you can use \verb!\usepackage[jerusalem,protestant]{bibleref-french}!
 % to use the \textsf{jerusalem} reference style with Protestant Bible books.
 %
 % The same is true for \verb!brabbrvname! and derivated commands.
@@ -466,7 +468,7 @@
 \renewcommand*{\BRperiod}{}}
 
 \renewcommand*{\brs@jerusalem}{%
-\brabbrvname
+\brabbrvname@catholic
 \renewcommand*{\BRbooknumberstyle}[1]{##1~}%
 \renewcommand*{\BRepistlenumberstyle}[1]{##1~}%
 \renewcommand*{\BRbooktitlestyle}[1]{##1}%
