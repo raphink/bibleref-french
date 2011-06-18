@@ -14,13 +14,17 @@
 %
 % \iffalse
 %<package>\NeedsTeXFormat{LaTeX2e}
+%<package>\def\fileversion{v2.0}
+%<package>\def\filedate{2011/06/18}
+%<package>\def\fileinfo{French translation of the bibleref package}
 %<package>\ProvidesPackage{bibleref-french}
-%<package>   [2011/04/13 1.0.2 French translation of bibleref]
+%<package>   [\filedate\space\fileversion\space\fileinfo]
 %
 %<*driver>
 \documentclass{ltxdoc}
 \usepackage[english,french]{babel}
 \usepackage{bibleref-french}
+\usepackage[breaklinks=true,unicode=true]{hyperref}
 \EnableCrossrefs
 \CodelineIndex
 \RecordChanges
@@ -35,7 +39,9 @@
 %
 % \CheckSum{0}
 %
-% \changes{v1.0}{2011/06/17}{Version and make dtx}
+% \changes{v2.0}{2011/06/18}{Make dtx, add styles and protestant/catholic
+%                            options, add index patch, add documentation}
+% \changes{v1.0.2}{2011/04/13}{Use non-breakable spaces in book names}
 %
 % \GetFileInfo{bibleref-french.dtx}
 %
@@ -113,7 +119,7 @@
 %
 % The same is true for \verb!brabbrvname! and derivated commands.
 %
-% \subsection{Sorted books in indexes}
+% \subsection{Sorting books in indexes}
 %
 % The \textsf{bibleref} package allows to set the order to books
 % to generate the index of Bible references.
