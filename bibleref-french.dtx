@@ -98,6 +98,8 @@
 % For example, you can use \verb!\usepackage[jerusalem,protestant]{bibleref-french}!
 % to use the \textsf{jerusalem} reference style with Protestant Bible books.
 %
+% The same is true for \verb!brabbrvname! and derivated commands.
+%
 % \section{Known Issues}
 %
 % \subsection{Book Names in \textsf{text} style}
@@ -251,7 +253,7 @@
 % \subsection{Abbreviated version}
 %
 %  \begin{macrocode}
-\renewcommand*{\brabbrvname}{%
+\newcommand*{\brabbrvname@catholic}{%
 \def\br@Genesis{Gn\BRperiod}%
 \def\br@Exodus{Ex\BRperiod}%
 \def\br@Leviticus{Lv\BRperiod}%
@@ -481,6 +483,11 @@ chapitre \protect\numberstringnum{##1}}%
 \def\br@Isaiah{\BRbookof Esa\"ie}%
 \def\br@Ecclesiastes{\BRbookof Eccl\'esiaste}%
 }
+\newcommand*{\brabbrvname@protestant}{%
+\brabbrvname@catholic%
+\def\br@Isaiah{\BRbookof Es}%
+\def\br@Ecclesiastes{\BRbookof Ec}%
+}
 %  \end{macrocode}
 %
 % \subsection{Package options}
@@ -491,8 +498,13 @@ chapitre \protect\numberstringnum{##1}}%
 \DeclareOption{text}{\brs@text}
 % Use Catholic names by default
 \let\brfullname\brfullname@catholic
-\DeclareOption{catholic}{\let\brfullname\brfullname@catholic}
-\DeclareOption{protestant}{\let\brfullname\brfullname@protestant}
+\let\brabbrvname\brabbrvname@catholic
+\DeclareOption{catholic}{%
+\let\brfullname\brfullname@catholic%
+\let\brabbrvname\brabbrvname@catholic}
+\DeclareOption{protestant}{%
+\let\brfullname\brfullname@protestant
+\let\brabbrvname\brabbrvname@protestant}
 \ProcessOptions
 \brfullname
 %  \end{macrocode}
