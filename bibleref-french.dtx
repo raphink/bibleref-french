@@ -86,7 +86,8 @@
 % A couple of Bible book names differ between Catholic and Protestant French translations.
 % This is the case of Isa\"ie/Esa\"ie and Qoh\'eleth/Ecclesiaste.
 %
-% For this reason, this package provides two additional options: \textsf{catholic} and \textsf{protestant}.
+% For this reason, this package provides two additional options:
+% \textsf{catholic} (or \textsf{catholique}) and \textsf{protestant}.
 %
 % The \textsf{catholic} option does nothing currently, since it is the default setting. However, calling \verb!\brfullname@catholic! will resume all references
 % to Catholic book names.
@@ -538,6 +539,9 @@ chapitre \protect\numberstringnum{##1}}%
 \let\brfullname\brfullname@catholic
 \let\brabbrvname\brabbrvname@catholic
 \DeclareOption{catholic}{%
+\let\brfullname\brfullname@catholic%
+\let\brabbrvname\brabbrvname@catholic}
+\DeclareOption{catholique}{%
 \let\brfullname\brfullname@catholic%
 \let\brabbrvname\brabbrvname@catholic}
 \DeclareOption{protestant}{%
