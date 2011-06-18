@@ -89,7 +89,8 @@
 % For this reason, this package provides two additional options:
 % \textsf{catholic} (or \textsf{catholique}) and \textsf{protestant}.
 %
-% The \textsf{catholic} option does nothing currently, since it is the default setting. However, calling \verb!\brfullname@catholic! will resume all references
+% The \textsf{catholic} option does nothing currently, since it is the default setting.
+% However, calling \verb!\brfullname@catholic! will resume all references
 % to Catholic book names.
 %
 % Both \verb!\brfullname@catholic! and \verb!\brfullname@protestant! can be used
@@ -102,6 +103,22 @@
 % to use the \textsf{jerusalem} reference style with Protestant Bible books.
 %
 % The same is true for \verb!brabbrvname! and derivated commands.
+%
+% \subsection{Sorted books in indexes}
+%
+% The \textsf{bibleref} package allows to set the order to books
+% to generate the index of Bible references.
+%
+% However, it uses the full names of Bible books to sort them, which is
+% problematic in French since there are accents in Bible book names.
+%
+% To fix that, this package patches \textsf{bibleref} to use
+% shortcuts instead of full book names.
+%
+% As a result, the \verb!\biblerefmap! must be used with the \emph{exact}
+% string used in the \verb!\ibibleref! calls. For example, if you use
+% \verb!\ibibleref{Jn}(3:16)!, you will need to declare \verb!\biblerefmap{Jn}{43}!
+% instead of \verb!\biblerefmap{Jean}{43}!.
 %
 % \section{Known Issues}
 %
@@ -130,11 +147,19 @@
 % \StopEventually{\PrintIndex}
 %
 % \section{Implementation}
+%
+% \subsection{Indexing patch}
+%
+%  \begin{macrocode}
+\RequirePackage{bibleref}
+\RequirePackage{etoolbox}
+\patchcmd{\@bible@verse}{\@bv@idxsort{\csname br@#1\endcsname}}{\@bv@idxsort{#1}}
+%  \end{macrocode}
+%
 % 
 % \subsection{Default separators}
 %
 %  \begin{macrocode}
-\RequirePackage{bibleref}
 \renewcommand*{\BRbooknumberstyle}[1]{#1~}%
 \renewcommand*{\BRepistlenumberstyle}[1]{#1~}%
 \renewcommand*{\BRbooktitlestyle}[1]{#1}%
