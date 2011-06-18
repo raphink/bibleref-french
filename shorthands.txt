@@ -50,6 +50,7 @@ Lc	Luc
 Jn	Jean
 Mc	Marc
 Ac	Acte
+Rm	Romains
 1Co	1 Corinthiens
 2Co	2 Corinthiens
 Ga	Galates
@@ -70,6 +71,4 @@ Jc	Jacques
 2Jn	2 Jean
 3Jn	3 Jean
 Jude	Jude
-
 Ap	Apocalypse
-Rm	Romains
