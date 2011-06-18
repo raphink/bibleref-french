@@ -56,13 +56,13 @@
 % This package inherits the commands from the \textsf{bibleref} package.
 % See the documentation for the \textsf{bibleref} package for general usage.
 %
-% \subsection{Additional styles}
+% \subsection{Additional Styles}
 %
 % The \textsf{bibleref-french} adds styles or overrides styles
-% from the \textsf{bibleref} package (such as the \textsf{default}
-% and \textsf{jerusalem} styles).
+% from the \textsf{bibleref} package (such as the \textsf{default},
+% \textsf{jerusalem} and \textsf{text} styles).
 %
-%Styles are listed in Table~\ref{tab:styles}.
+% Styles are listed in Table~\ref{tab:styles}.
 %
 %\selectlanguage{french}
 %\begin{table}[tbh]
@@ -80,6 +80,47 @@
 %\end{center}
 %\end{table}
 %\selectlanguage{english}
+%
+% \subsection{Catholic and Protestant book names}
+%
+% A couple of Bible book names differ between Catholic and Protestant French translations.
+% This is the case of Isa\"ie/Esa\"ie and Qoh\'eleth/Ecclesiaste.
+%
+% For this reason, this package provides two additional options: \textsf{catholic} and \textsf{protestant}.
+%
+% The \textsf{catholic} option does nothing currently, since it is the default setting. However, calling \verb!\brfullname@catholic! will resume all references
+% to Catholic book names.
+%
+% Both \verb!\brfullname@catholic! and \verb!\brfullname@protestant! can be used
+% as a replacements to \verb!\brfullname! in style definitions to force
+% using either naming scheme. This is however not recommended, as using \verb!\brfullname!
+% allows users to use a style with the naming scheme of their choice.
+% For example, you can use \verb!\usepackage[jerusalem,protestant]{bibleref-french}!
+% to use the \textsf{jerusalem} reference style with Protestant Bible books.
+%
+% \section{Known Issues}
+%
+% \subsection{Book Names in \textsf{text} style}
+%
+% The \textsf{text} style has to be refined to take in consideration the
+% specificities of French. Table~\ref{tab:textspec} lists these specificities.
+%
+%\begin{table}[tbh]
+%\caption{French specificities in Bible book names, with current issues emphasized} 
+%\label{tab:textspec}
+%\vspace{10pt}
+%\begin{center}
+%\begin{tabular}{lp{0.5\textwidth}}
+%\bfseries English & \bfseries French\\
+%Book of Genesis & Livre \emph{de la} Gen\`ese\\
+%Book of Exodus & Livre \emph{de l'}Exode\\
+%Book of Deuteronomy & Livre \emph{du} Deut\'eronome\\
+%Book of Numbers & Livre \emph{des} Nombres\\
+%Book of Acts & Livre \emph{des} Actes des Ap\^otres\\
+%Book of Revelations & Livre \emph{de l'}Apocalypse\\
+%\end{tabular}
+%\end{center}
+%\end{table}
 %
 % \StopEventually{\PrintIndex}
 %
@@ -130,13 +171,13 @@
 % \subsection{Default full book names}
 %
 %  \begin{macrocode}
-\renewcommand*{\brfullname}{%
-\def\br@Genesis{\BRbookof Genèse}%
+\newcommand*{\brfullname@catholic}{%
+\def\br@Genesis{\BRbookof Gen\`ese}%
 \def\br@Exodus{\BRbookof Exode}%
-\def\br@Leviticus{\BRbookof Lévitique}%
+\def\br@Leviticus{\BRbookof L\'evitique}%
 \def\br@Numbers{\BRbookof Nombres}%
-\def\br@Deuteronomy{\BRbookof Deutéronome}%
-\def\br@Joshua{\BRbookof Josué}%
+\def\br@Deuteronomy{\BRbookof Deut\'eronome}%
+\def\br@Joshua{\BRbookof Josu\'e}%
 \def\br@Judges{\BRbookof Juges}%
 \def\br@Ruth{\BRbookof Ruth}%
 \def\br@ISamuel{\BRbooknumberstyle{1}\BRbookof Samuel}%
@@ -146,35 +187,35 @@
 \def\br@IChronicles{\BRbooknumberstyle{1}\BRbookof Chroniques}%
 \def\br@IIChronicles{\BRbooknumberstyle{2}\BRbookof Chroniques}%
 \def\br@Ezra{\BRbookof Esdras}%
-\def\br@Nehemiah{\BRbookof Néhémie}%
+\def\br@Nehemiah{\BRbookof N\'eh\'emie}%
 \def\br@Tobit{\BRbookof Tobie}%
 \def\br@Judith{\BRbookof Judith}%
 \def\br@Esther{\BRbookof Esther}%
-\def\br@IMaccabees{\BRbooknumberstyle{1}\BRbookof Maccabées}%
-\def\br@IIMaccabees{\BRbooknumberstyle{2}\BRbookof Maccabées}%
+\def\br@IMaccabees{\BRbooknumberstyle{1}\BRbookof Maccab\'ees}%
+\def\br@IIMaccabees{\BRbooknumberstyle{2}\BRbookof Maccab\'ees}%
 \def\br@Job{\BRbookof Job}%
 \def\br@Psalms{\BRbookof Psaumes}%
 \def\br@Proverbs{\BRbookof Proverbes}%
-\def\br@Ecclesiastes{\BRbookof Qohélet}%
+\def\br@Ecclesiastes{\BRbookof Qoh\'elet}%
 \def\br@SongofSongs{\BRbookof Cantique des cantiques}%
 \def\br@Wisdom{\BRbookof Sagesse}%
 \def\br@Ecclesiasticus{\BRbookof Siracide}%
-\def\br@Isaiah{\BRbookof Isaïe}%
-\def\br@Jeremiah{\BRbookof Jérémie}%
+\def\br@Isaiah{\BRbookof Isa\"ie}%
+\def\br@Jeremiah{\BRbookof J\'er\'emie}%
 \def\br@Lamentations{\BRbookof Lamentations}%
 \def\br@Baruch{\BRbookof Baruch}%
-\def\br@Ezekiel{\BRbookof Ézéchiel}%
+\def\br@Ezekiel{\BRbookof \'Ez\'echiel}%
 \def\br@Daniel{\BRbookof Daniel}%
-\def\br@Hosea{\BRbookof Osée}%
+\def\br@Hosea{\BRbookof Os\'ee}%
 \def\br@Joel{\BRbookof Joël}%
 \def\br@Amos{\BRbookof Amos}%
 \def\br@Obadiah{\BRbookof Abdias}%
 \def\br@Jonah{\BRbookof Jonas}%
-\def\br@Micah{\BRbookof Michée}%
+\def\br@Micah{\BRbookof Mich\'ee}%
 \def\br@Nahum{\BRbookof Nahum}%
 \def\br@Habakkuk{\BRbookof Habaquq}%
 \def\br@Zephaniah{\BRbookof Sophonie}%
-\def\br@Haggai{\BRbookof Aggée}%
+\def\br@Haggai{\BRbookof Agg\'ee}%
 \def\br@Zechariah{\BRbookof Zacharie}%
 \def\br@Malachi{\BRbookof Malachie}%
 \def\br@Matthew{\BRgospel Matthieu}%
@@ -186,16 +227,16 @@
 \def\br@ICorinthians{\BRepistlenumberstyle{1}\BRepistletothe Corinthiens}%
 \def\br@IICorinthians{\BRepistlenumberstyle{2}\BRepistletothe Corinthiens}%
 \def\br@Galatians{\BRepistletothe Galates}%
-\def\br@Ephesians{\BRepistletothe Éphésiens}%
+\def\br@Ephesians{\BRepistletothe \'Eph\'esiens}%
 \def\br@Philippians{\BRepistletothe Philippiens}%
 \def\br@Colossians{\BRepistletothe Colossiens}%
 \def\br@IThessalonians{\BRepistlenumberstyle{1}\BRepistletothe Thessaloniciens}%
 \def\br@IIThessalonians{\BRepistlenumberstyle{2}\BRepistletothe Thessaloniciens}%
-\def\br@ITimothy{\BRepistlenumberstyle{1}\BRepistleto Timothée}%
-\def\br@IITimothy{\BRepistlenumberstyle{2}\BRepistleto Timothée}%
+\def\br@ITimothy{\BRepistlenumberstyle{1}\BRepistleto Timoth\'ee}%
+\def\br@IITimothy{\BRepistlenumberstyle{2}\BRepistleto Timoth\'ee}%
 \def\br@Titus{\BRepistleto Tite}%
-\def\br@Philemon{\BRepistleto Philémon}%
-\def\br@Hebrews{\BRepistletothe Hébreux}%
+\def\br@Philemon{\BRepistleto Phil\'emon}%
+\def\br@Hebrews{\BRepistletothe H\'ebreux}%
 \def\br@James{\BRepistleof Jacques}%
 \def\br@IPeter{\BRepistlenumberstyle{1}\BRepistleof Pierre}%
 \def\br@IIPeter{\BRepistlenumberstyle{2}\BRepistleof Pierre}%
@@ -316,7 +357,7 @@
 %\newcommand*\br@Pr{\br@Proverbs}%
 %\newcommand*\br@Qo{\br@Ecclesiastes}%
 \newcommand*\br@Ct{\br@SongofSongs}%
-\renewcommand*\br@Sg{\br@Wisdom}%Obligé de faire un renewcommand parceque Sg en Anglais veut dire Song
+\renewcommand*\br@Sg{\br@Wisdom} % Sg in English is for Song
 %\newcommand*\br@Si{\br@Ecclesiasticus}%
 %\newcommand*\br@Is{\br@Isaiah}%
 %\newcommand*\br@Jr{\br@Jeremiah}%
@@ -429,13 +470,31 @@ chapitre \protect\numberstringnum{##1}}%
 }
 %  \end{macrocode}
 %
+% \subsection{Protestant Book Names}
+%
+% French Catholics and Protestants use different names for a couple of Bible books.
+% This is the case of the books of Isaïe/Esaïe and Qoh\'eleth/Eccl\'esiaste.
+%
+%  \begin{macrocode}
+\newcommand*{\brfullname@protestant}{%
+\brfullname@catholic%
+\def\br@Isaiah{\BRbookof Esa\"ie}%
+\def\br@Ecclesiastes{\BRbookof Eccl\'esiaste}%
+}
+%  \end{macrocode}
+%
 % \subsection{Package options}
 %
 %  \begin{macrocode}
 \DeclareOption{default}{\brs@default}
 \DeclareOption{jerusalem}{\brs@jerusalem}
 \DeclareOption{text}{\brs@text}
+% Use Catholic names by default
+\let\brfullname\brfullname@catholic
+\DeclareOption{catholic}{\let\brfullname\brfullname@catholic}
+\DeclareOption{protestant}{\let\brfullname\brfullname@protestant}
 \ProcessOptions
+\brfullname
 %  \end{macrocode}
 %
 % \Finale
